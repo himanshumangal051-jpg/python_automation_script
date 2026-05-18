@@ -73,7 +73,7 @@ This project solves the problem by building a Python-based automation system tha
 ## Complete Python Source Code
 The complete, detailed, commented source code for this project is provided in:
 
-**`/home/runner/work/python_automation_script/python_automation_script/automation_project.py`**
+**`automation_project.py`**
 
 The source file contains more than 300 lines of Python code and includes:
 - full comments for every major section,
@@ -130,7 +130,7 @@ Renames all eligible files using the custom prefix entered by the user.
 Sorts files into size-based folders such as Small_Files, Medium_Files, and Large_Files.
 
 ### 15. `clean_temporary_files()`
-Deletes temporary and junk files like `.tmp`, `.bak`, and `.log` where appropriate.
+Deletes temporary and junk files like `.tmp`, `.bak`, `.old`, and similar unwanted files where appropriate.
 
 ### 16. `remove_empty_folders()`
 Deletes folders that no longer contain files after the organization and cleaning process.
