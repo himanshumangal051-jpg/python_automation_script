@@ -349,7 +349,7 @@ class FileAutomationProject:
     # Purpose: Move files into size-based folders.
     # -----------------------------------------------------------------------
     def sort_files_by_size(self):
-        """Copy files into small, medium, and large size folders to preserve originals."""
+        """Sort files by size into dedicated folders while preserving the original organized files."""
         size_root = os.path.join(self.base_directory, "Size_Sorted")
         os.makedirs(size_root, exist_ok=True)
 

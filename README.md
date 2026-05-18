@@ -130,7 +130,7 @@ Renames all eligible files using the custom prefix entered by the user.
 Copies files into size-based folders such as Small_Files, Medium_Files, and Large_Files so the original organized files remain available in their category folders.
 
 ### 15. `clean_temporary_files()`
-Deletes temporary and junk files that match the exact rules used in the script: extensions `.tmp`, `.temp`, `.bak`, `.old`, `.dmp` and file names `thumbs.db`, `.ds_store`, and `desktop.ini`.
+Deletes temporary and junk files that match the exact rules used in the script: extensions `.tmp`, `.temp`, `.bak`, `.old`, `.dmp` and file names `thumbs.db`, `.DS_Store`, and `desktop.ini`.
 
 ### 16. `remove_empty_folders()`
 Deletes folders that no longer contain files after the organization and cleaning process.
