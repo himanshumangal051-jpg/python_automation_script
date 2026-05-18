@@ -127,10 +127,10 @@ Moves files into category folders based on their extension and keeps the directo
 Renames all eligible files using the custom prefix entered by the user.
 
 ### 14. `sort_files_by_size()`
-Sorts files into size-based folders such as Small_Files, Medium_Files, and Large_Files.
+Copies files into size-based folders such as Small_Files, Medium_Files, and Large_Files so the original organized files remain available in their category folders.
 
 ### 15. `clean_temporary_files()`
-Deletes temporary and junk files like `.tmp`, `.bak`, `.old`, and similar unwanted files where appropriate.
+Deletes temporary and junk files that match the exact rules used in the script: extensions `.tmp`, `.temp`, `.bak`, `.old`, `.dmp` and file names `thumbs.db`, `.ds_store`, and `desktop.ini`.
 
 ### 16. `remove_empty_folders()`
 Deletes folders that no longer contain files after the organization and cleaning process.

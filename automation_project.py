@@ -321,7 +321,7 @@ class FileAutomationProject:
 
                     old_path = os.path.join(root, file_name)
                     _, extension = os.path.splitext(file_name)
-                    new_name = f"{prefix}_{serial_number:03d}{extension.lower()}"
+                    new_name = f"{prefix}_{serial_number:03d}{extension}"
                     new_path = self.unique_destination_path(root, new_name)
 
                     # Avoid renaming a file to the same path.
@@ -343,7 +343,7 @@ class FileAutomationProject:
     # Purpose: Move files into size-based folders.
     # -----------------------------------------------------------------------
     def sort_files_by_size(self):
-        """Sort files into small, medium, and large size folders."""
+        """Copy files into small, medium, and large size folders."""
         size_root = os.path.join(self.base_directory, "Size_Sorted")
         os.makedirs(size_root, exist_ok=True)
 
