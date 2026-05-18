@@ -13,6 +13,12 @@ from datetime import datetime
 
 
 # ---------------------------------------------------------------------------
+# Module-level constants used across the automation project.
+# ---------------------------------------------------------------------------
+AUTOMATION_LOG_FILE = "automation.log"
+
+
+# ---------------------------------------------------------------------------
 # Function: configure_logging
 # Purpose : Configure logging for both console output and file storage.
 # ---------------------------------------------------------------------------
@@ -237,7 +243,7 @@ class FileAutomationProject:
                 file_path = os.path.join(root, file_name)
 
                 # Skip the project log file to avoid moving active logs.
-                if os.path.basename(file_path) == "automation.log":
+                if os.path.basename(file_path) == AUTOMATION_LOG_FILE:
                     continue
 
                 yield file_path
@@ -281,7 +287,7 @@ class FileAutomationProject:
         """Organize files by their extension categories."""
         self.create_category_directories()
 
-        for file_path in list(self.iter_candidate_files(self.generated_directory_names)):
+        for file_path in self.iter_candidate_files(self.generated_directory_names):
             try:
                 # Determine the correct target category for the file.
                 _, extension = os.path.splitext(file_path)
@@ -316,7 +322,7 @@ class FileAutomationProject:
             for file_name in files:
                 try:
                     # Skip the log file so logging remains stable.
-                    if file_name == "automation.log":
+                    if file_name == AUTOMATION_LOG_FILE:
                         continue
 
                     old_path = os.path.join(root, file_name)
@@ -343,14 +349,14 @@ class FileAutomationProject:
     # Purpose: Move files into size-based folders.
     # -----------------------------------------------------------------------
     def sort_files_by_size(self):
-        """Copy files into small, medium, and large size folders."""
+        """Copy files into small, medium, and large size folders to preserve originals."""
         size_root = os.path.join(self.base_directory, "Size_Sorted")
         os.makedirs(size_root, exist_ok=True)
 
         for folder_name in ["Small_Files", "Medium_Files", "Large_Files"]:
             os.makedirs(os.path.join(size_root, folder_name), exist_ok=True)
 
-        for file_path in list(self.iter_candidate_files({"Size_Sorted"})):
+        for file_path in self.iter_candidate_files({"Size_Sorted"}):
             try:
                 # Determine the target size folder for the current file.
                 size_folder = self.classify_size(file_path)
@@ -377,7 +383,7 @@ class FileAutomationProject:
         temporary_extensions = {".tmp", ".temp", ".bak", ".old", ".dmp"}
         temporary_names = {"thumbs.db", ".ds_store", "desktop.ini"}
 
-        for file_path in list(self.iter_candidate_files()):
+        for file_path in self.iter_candidate_files():
             try:
                 file_name = os.path.basename(file_path)
                 _, extension = os.path.splitext(file_name)
@@ -484,7 +490,7 @@ def main():
 
     # Ask the user for the working directory before configuring the project.
     base_directory = get_valid_directory()
-    log_file_path = os.path.join(base_directory, "automation.log")
+    log_file_path = os.path.join(base_directory, AUTOMATION_LOG_FILE)
     configure_logging(log_file_path)
     logging.info("Application started for base directory: %s", base_directory)
 
